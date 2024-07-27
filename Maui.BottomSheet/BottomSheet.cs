@@ -52,7 +52,7 @@ public partial class BottomSheet : ContentView
     }
 
     readonly Border _contentPresenter;
-    bool _dimColorIsChanging;
+    bool _backdropColorIsChanging;
     bool _backgroundColorIsChanging;
     double _minimumTranslationY = 0;
     double _appliedTotalTranslationYDiff;
@@ -212,21 +212,21 @@ public partial class BottomSheet : ContentView
 
     private void OnBackdropColorChanged(Color oldColor, Color newColor)
     {
-        _dimColorIsChanging = true;
+        _backdropColorIsChanging = true;
         BackgroundColor = newColor.WithAlpha(BackdropOpacity);
     }
 
     private void OnBackdropOpacityChanged(float oldAmount, float newAmount)
     {
-        _dimColorIsChanging = true;
+        _backdropColorIsChanging = true;
         BackgroundColor = BackgroundColor.WithAlpha(newAmount);
     }
 
     private void OnBackgroundColorChanged()
     {
-        if (_dimColorIsChanging)
+        if (_backdropColorIsChanging)
         {
-            _dimColorIsChanging = false;
+            _backdropColorIsChanging = false;
             return;
         }
 
