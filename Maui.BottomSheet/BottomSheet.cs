@@ -201,7 +201,9 @@ public partial class BottomSheet : ContentView
 
                 _contentPresenter.HeightRequest += _contentPresenter.Padding.VerticalThickness;
 
-                _contentPresenter.HeightRequest = Math.Min(Application.Current?.MainPage?.Height - 100 ?? 0, _contentPresenter.HeightRequest);
+                var mainPageHeight = Application.Current?.MainPage?.Height;
+                var expectedHeight = mainPageHeight - mainPageHeight * 20 / 100 ?? 0;
+                _contentPresenter.HeightRequest = Math.Min(expectedHeight, _contentPresenter.HeightRequest);
 
                 _contentPresenterSizeIsSet = true;
             }
