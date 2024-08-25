@@ -10,7 +10,9 @@ namespace MauiApp1
         {
             InitializeComponent();
 
-            SheetOpen.Clicked += (s, e) => sh.Open();
+            sheetOpen.Clicked += (s, e) => sh.Open();
+            darkModeBtn.Clicked += (s, e) => Application.Current.UserAppTheme = AppTheme.Dark;
+            lightModeBtn.Clicked += (s, e) => Application.Current.UserAppTheme = AppTheme.Light;
         }
 
         private void OnCounterClicked(object sender, EventArgs e)

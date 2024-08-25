@@ -73,7 +73,7 @@ public partial class BottomSheet : ContentView
         _contentPresenter = new Border
         {
             StrokeThickness = 0,
-            BackgroundColor = Colors.White,
+            BackgroundColor = Application.Current?.RequestedTheme == AppTheme.Light ? Colors.White : Color.FromArgb("1C1C1C"),
             Padding = new Thickness(10, 25),
             VerticalOptions = LayoutOptions.End,
             HorizontalOptions = LayoutOptions.Center,
@@ -85,6 +85,13 @@ public partial class BottomSheet : ContentView
         base.Content = _contentPresenter;
 
         PropertyChanged += OnPropertyChanged;
+        if(Application.Current is not null)
+        {
+            Application.Current.RequestedThemeChanged += (s, e) =>
+            {
+                _contentPresenter.BackgroundColor = Application.Current?.RequestedTheme == AppTheme.Light ? Colors.White : Color.FromArgb("1C1C1C");
+            };
+        }
 
         InitGestures();
     }

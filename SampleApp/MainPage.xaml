@@ -5,7 +5,11 @@
              xmlns:bs="clr-namespace:Maui.BottomSheet;assembly=Maui.BottomSheet">
 
     <Grid>
-        <Button VerticalOptions="Start" Text="ShowSheet" x:Name="SheetOpen" WidthRequest="100" HeightRequest="100"/>
+        <HorizontalStackLayout Spacing="10">
+            <Button VerticalOptions="Start" Text="ShowSheet" x:Name="sheetOpen" WidthRequest="100" HeightRequest="100"/>
+            <Button VerticalOptions="Start" Text="DarkMode" x:Name="darkModeBtn" WidthRequest="100" HeightRequest="100"/>
+            <Button VerticalOptions="Start" Text="LightMode" x:Name="lightModeBtn" WidthRequest="100" HeightRequest="100"/>
+        </HorizontalStackLayout>
 
         <bs:BottomSheet x:Name="sh" CloseByTappingOutside="True">
             <ScrollView>
